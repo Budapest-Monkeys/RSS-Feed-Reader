@@ -1,7 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, } from 'react';
+
 
 function Home() {
     const [backEndData, setBackEndData] = useState([{}])
+    
+
 
     useEffect(() => {
       // A proxy was define in package.json so we dont need to put the full route. This will be changed in production
