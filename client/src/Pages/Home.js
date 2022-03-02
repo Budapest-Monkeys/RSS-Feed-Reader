@@ -1,5 +1,6 @@
 import React, {useEffect, useState, } from 'react';
-
+import { createApp } from 'vue'
+import App from './App.vue'
 
 function Home() {
     const [backEndData, setBackEndData] = useState([{}])
@@ -30,3 +31,7 @@ function Home() {
     );
 }
 export default Home;
+
+function createApp(rootComponent: Component, rootProps?: object): App
+const app = createApp(/* ... */)
+app.provide('message', 'hello')
