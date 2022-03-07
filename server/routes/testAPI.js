@@ -15,7 +15,7 @@ router.post('/', (req,res) => {
         const json = parse(html);
         console.log(json[0]["children"]);
     })
-    res.send(`User sent url of ${url.url}`);
+    res.status(200).send(`User sent url of ${url.url}`);
 });
 
 module.exports = router;
