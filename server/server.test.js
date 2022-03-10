@@ -29,9 +29,9 @@ describe('Error handler test', () => {
     describe("Basic test to see if error handling returns error code in correct JSON format", () => {
         it('Should respond with 404', () => {
             request(app)
-            .get('/')
+            .get('/xysw')
             .expect('Conent-Type', /json/)
-            .expect(200)
+            .expect(404)
         })
     })
 })
