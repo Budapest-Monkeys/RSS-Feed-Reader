@@ -25,3 +25,24 @@ describe('POST /test ', () => {
         })
     })
 })
+describe('Error handler test', () => {
+    describe("Basic test to see if error handling returns error code in correct JSON format", () => {
+        it('Should respond with 404', () => {
+            request(app)
+            .get('/')
+            .expect('Conent-Type', /json/)
+            .expect(200)
+        })
+    })
+})
+
+describe('POST /test 400  error handler test', () => {
+    describe("Basic test to see if error handling returns error code in correct JSON format", () => {
+        it('Should respond with 400', () => {
+            request(app)
+            .get('/')
+            .expect('Conent-Type', /json/)
+            .expect(400)
+        })
+    })
+})
