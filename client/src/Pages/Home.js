@@ -1,4 +1,4 @@
-import React, {useEffect, useState, } from 'react';
+import React, {useEffect, useState, useContext } from 'react';
 import { createApp } from 'vue'
 import App from './App.vue'
 import { ThemeContext } from "../../contexts/ThemeContext";
@@ -9,12 +9,13 @@ function Home() {
     const [backEndData, setBackEndData] = useState([{}])
     const context = useContext(ThemeContext);
     const theme = context.isLightTheme ? context.light : context.dark;
-    const theme2 = context.isLightTheme ? context.cardLight : context.cardDark;
+ //   const theme2 = context.isLightTheme ? context.cardLight : context.cardDark;
 
     const ThemeToggler = (props) => {
       const context = useContext(ThemeContext);
       const btnText = context.isLightTheme ? "Light ☀️" : "Dark 🌘";
       const toggleTheme = context.toggleTheme;
+      
     
       return (
         <button className={`button is-light rounded`} onClick={toggleTheme}>
@@ -44,19 +45,23 @@ function Home() {
             <p key={i}>{user}</p>
           ))
         )}
+         <div className= {`Home ${theme}` }>
+         <ThemeToggler className="themeBtn"/>
         <div className='nav'>
-          <div className="logo">RSS-Feed<span style="color:#4267B2">.</span></div>  
+          <div className="logo">RSS-Feed<span>.</span></div>  
           <ul>
-            <li><a class="active" href="#">Home</a></li>
-            <li><a href="#">Members</a></li>
+            <li> Home</li>
+           
           </ul>
           <div class="content">
-            <h2>🐒 <span style="color:#13AA52">Budapest-Monkeys</span>CS4800  
+            <h2>🐒 <span >Budapest-Monkeys</span>CS4800  
             </h2>
           </div>
        </div>
+       </div>
       </div>
-
+//Comments
+//
 
     );
 }
