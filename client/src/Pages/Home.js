@@ -1,8 +1,8 @@
 import React, {useEffect, useState, useContext } from 'react';
-import { createApp } from 'vue'
-import App from './App.vue'
-import { ThemeContext } from "../../contexts/ThemeContext";
-import '/Home.css'
+//import { createApp } from 'vue'
+//import App from './App.vue'
+import { ThemeContext } from "../contexts/ThemeContext";
+import './/Home.css'
 
 
 function Home() {
@@ -67,6 +67,6 @@ function Home() {
 }
 export default Home;
 
-function createApp(rootComponent: Component, rootProps?: object): App
-const app = createApp(/* ... */)
-app.provide('message', 'hello')
+//function createApp(rootComponent: Component, rootProps?: object): App
+//const app = createApp(/* ... */)
+//app.provide('message', 'hello')
