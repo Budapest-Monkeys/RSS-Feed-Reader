@@ -1,11 +1,11 @@
 const express = require('express');
 const bodyParser = require('body-parser')
-const testRoutes = require('./routes/testAPI')
+const testRoutes = require('./routes/rssAPI')
 const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(bodyParser.json());
-app.use('/test', testRoutes);
+app.use('/rssAPI', testRoutes);
 
 // Handle 404s here with an error object 
 app.use((req, res, next) => {
