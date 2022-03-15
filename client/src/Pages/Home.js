@@ -56,6 +56,8 @@ function Home() {
           <div class="content">
             <h2>🐒 <span >Budapest-Monkeys</span>CS4800  
             </h2>
+            <h3>RSS Feed Reader with simple UI 
+                and user friendly experience</h3>
           </div>
        </div>
        </div>
