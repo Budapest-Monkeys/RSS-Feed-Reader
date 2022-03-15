@@ -3,13 +3,14 @@ import React, {useEffect, useState, useContext } from 'react';
 //import App from './App.vue'
 import { ThemeContext } from "../contexts/ThemeContext";
 import './/Home.css'
-
+import Footer from './Footer'
 
 function Home() {
     const [backEndData, setBackEndData] = useState([{}])
     const context = useContext(ThemeContext);
     const theme = context.isLightTheme ? context.light : context.dark;
- //   const theme2 = context.isLightTheme ? context.cardLight : context.cardDark;
+    const theme2 = context.isLightTheme ? context.cardLight : context.cardDark;
+    const theme3 = context.isLightTheme ? context.pageLight : context.pageDark;
 
     const ThemeToggler = (props) => {
       const context = useContext(ThemeContext);
@@ -37,7 +38,7 @@ function Home() {
     }, [])
     
     return (
-        <div>
+        /*<div>
         {(typeof backEndData.users === 'undefined') ? (
           <p>Loading...</p>
         ): (
@@ -45,25 +46,34 @@ function Home() {
             <p key={i}>{user}</p>
           ))
         )}
+        </div> */
          <div className= {`Home ${theme}` }>
-         <ThemeToggler className="themeBtn"/>
-        <div className='nav'>
-          <div className="logo">RSS-Feed<span>.</span></div>  
+         <div className={`nav ${theme2}`}>
+          <div className="logo">RSS-Feed<span>.</span></div> 
+          
           <ul>
-            <li> Home</li>
+            <li> <a href ="/" id = "home-link" >
+                         Home
+                       </a> </li>
            
           </ul>
-          <div class="content">
-            <h2>🐒 <span >Budapest-Monkeys</span>CS4800  
-            </h2>
-            <h3>RSS Feed Reader with simple UI 
-                and user friendly experience</h3>
           </div>
+       
+          <div className={`headerH ${theme3}`}>
+          <div className={`info ${theme3}`}>
+          <div className={theme3}>
+          <ThemeToggler className="themeBtn"/>  
+          </div>
+
+            <h2>🐒</h2> <span >Budapest-Monkeys</span>
+            
+            <h3>RSS Feed Reader</h3>
+          
+       
+       </div>
+        <Footer/>
        </div>
        </div>
-      </div>
-//Comments
-//
 
     );
 }
