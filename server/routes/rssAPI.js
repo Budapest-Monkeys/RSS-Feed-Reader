@@ -2,7 +2,6 @@ const express = require('express')
 const jsdom = require('jsdom')
 const router  = express.Router();
 const {JSDOM} = jsdom;
-var fs = require("fs");
 
 
 router.get('/', (req, res, next) => {
