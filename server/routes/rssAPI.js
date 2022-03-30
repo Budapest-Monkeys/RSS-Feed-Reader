@@ -3,11 +3,6 @@ const jsdom = require('jsdom')
 const router  = express.Router();
 const {JSDOM} = jsdom;
 
-
-router.get('/', (req, res, next) => {
-    res.status(200).json({"users" : ["userOne", "userTwo", "userThree", "userFour"]});
-});
-
 router.post('/', (req, res, next) => {
     const url = req.body;
     
