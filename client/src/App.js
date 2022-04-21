@@ -6,13 +6,15 @@ import Test from './Pages/Test';
 import ThemeContextProvider from ".//contexts/ThemeContext";
 import 'bulma/css/bulma.css';
 
+//const history = createHistory();
+
 function App() {
   return (  
     <ThemeContextProvider>
     <Router>
       <Routes>
         <Route path="/" element={<Home/>}/>
-        <Route path="/feed" element={<Feed/>}/>
+        <Route path="/feed" element = {<Feed/>}/>
         <Route path="/test" element={<Test/>}/>
       </Routes>
     </Router>

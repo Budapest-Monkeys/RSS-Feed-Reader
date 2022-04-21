@@ -1,13 +1,38 @@
 import React, {useEffect, useState, useContext } from 'react';
-import axios from "axios";
 import { ThemeContext } from "../contexts/ThemeContext";
-import { useParams } from "react-router-dom";
 import './/Feed.css'
 import Footer from './Footer'
 
-const Feed = () => {
-    const [backEndData, setBackEndData] = useState([{}])
+
+
+
+
+function Feed () {
+    const [backEndData, setBackEndData] = useState([{}]);
+    const [rssUrl, setRssUrl] = useState("");
     const [items, setItems] = useState([]);
+  
+    const getRss = async (e) => {
+        e.preventDefault();
+        const urlRegex = /(http|ftp|https):\/\/[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:\/~+#-]*[\w@?^=%&amp;\/~+#-])?/;
+        if (!urlRegex.test(rssUrl)) {
+          return;
+        }
+    
+    const res = await fetch(`https://api.allorigins.win/get?url=${rssUrl}`);
+    const { contents } = await res.json();
+    const feed = new window.DOMParser().parseFromString(contents, "text/xml");
+    const items = feed.querySelectorAll("item");
+    const feedItems = [...items].map((el) => ({
+          link: el.querySelector("link").innerHTML,
+          title: el.querySelector("title").innerHTML,
+          author: el.querySelector("author").innerHTML
+    }));
+    setItems(feedItems);
+    };
+
+      
+
     const context = useContext(ThemeContext);
     const theme = context.isLightTheme ? context.light : context.dark;
     const theme2 = context.isLightTheme ? context.cardLight : context.cardDark;
@@ -58,9 +83,24 @@ const Feed = () => {
           <div className={`${theme3}`}>
           <div className={theme3}>
           <ThemeToggler className="themeBtn"/>  
+          </div> 
+            <div onSubmit={getRss}>
+            <div>
+                <label> rss url</label>
+                    <br />
+          <input onChange={(e) => setRssUrl(e.target.value)} value={rssUrl} />
+        </div>
+        <input type="submit" />
+      </div>
+      {items.map((item) => {
+        return (
+          <div>
+            <h1>{item.title}</h1>
+            <p>{item.author}</p>
+            <a href={item.link}>{item.link}</a>
           </div>
-
-            
+        );
+      })}
           
        
        </div>
@@ -70,4 +110,10 @@ const Feed = () => {
 
     );
 }
+
 export default Feed;
+
+
+
+
+
