@@ -55,6 +55,9 @@ function Home() {
             <li> <a href ="/" id = "home-link" >
                          Home
                        </a> </li>
+            <li> <a href ="/feed" id = "feed-link" >
+                         Feed
+                        </a> </li>
            
           </ul>
           </div>
