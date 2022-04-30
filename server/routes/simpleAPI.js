@@ -39,7 +39,7 @@ const myFeedParser = function (req, res, next) {
                 jsonParse = JSON.parse(jsonString)
                 items = jsonParse["rss"]["channel"][0]["item"]
                 parsedItems = itemParser(items)
-                res.status(200).send(parsedItems)
+                res.status(200).send({parsedItems})
             }
         });
     })

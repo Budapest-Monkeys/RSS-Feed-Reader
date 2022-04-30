@@ -22,8 +22,11 @@ function Feed () {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: postBody
-     });
-    const { contents } = await res.json();
+     })
+     .then(response => response.json())
+     .then(jsonBody => { console.log(jsonBody); return jsonBody; })
+
+    const { contents } = res;
     const feed = new window.DOMParser().parseFromString(contents, "text/xml");
     const items = feed.querySelectorAll("item");
     const feedItems = [...items].map((el) => ({
