@@ -3,10 +3,6 @@ import { ThemeContext } from "../contexts/ThemeContext";
 import './/Feed.css'
 import Footer from './Footer'
 
-
-
-
-
 function Feed () {
     const [backEndData, setBackEndData] = useState([{}]);
     const [rssUrl, setRssUrl] = useState("");
@@ -14,12 +10,19 @@ function Feed () {
   
     const getRss = async (e) => {
         e.preventDefault();
+        
         const urlRegex = /(http|ftp|https):\/\/[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:\/~+#-]*[\w@?^=%&amp;\/~+#-])?/;
         if (!urlRegex.test(rssUrl)) {
           return;
         }
-    
-    const res = await fetch(`https://api.allorigins.win/get?url=${rssUrl}`);
+
+    var postBody = JSON.stringify({"url": rssUrl})
+    console.log(postBody)
+    const res = await fetch(`/simpleAPI`, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: postBody
+     });
     const { contents } = await res.json();
     const feed = new window.DOMParser().parseFromString(contents, "text/xml");
     const items = feed.querySelectorAll("item");
@@ -28,10 +31,10 @@ function Feed () {
           title: el.querySelector("title").innerHTML,
           author: el.querySelector("author").innerHTML
     }));
+  
     setItems(feedItems);
     };
 
-      
 
     const context = useContext(ThemeContext);
     const theme = context.isLightTheme ? context.light : context.dark;
@@ -52,16 +55,7 @@ function Feed () {
     };
 
 
-    useEffect(() => {
-      // A proxy was define in package.json so we dont need to put the full route. This will be changed in production
-      fetch("/api").then(
-        response => response.json()
-      ).then(
-        data => {
-          setBackEndData(data)
-        }
-      )
-    }, [])
+
     
     return (
         
@@ -80,18 +74,21 @@ function Feed () {
           </ul>
           </div>
        
+
           <div className={`${theme3}`}>
           <div className={theme3}>
           <ThemeToggler className="themeBtn"/>  
           </div> 
-            <div onSubmit={getRss}>
+          <form onSubmit={getRss}>
             <div>
-                <label> rss url</label>
+            <div>
+                <label> Enter URL here </label>
                     <br />
           <input onChange={(e) => setRssUrl(e.target.value)} value={rssUrl} />
         </div>
         <input type="submit" />
       </div>
+      </form>
       {items.map((item) => {
         return (
           <div>
@@ -104,6 +101,7 @@ function Feed () {
           
        
        </div>
+
         <Footer/>
        </div>
        
