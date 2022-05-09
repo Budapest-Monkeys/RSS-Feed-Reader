@@ -46,7 +46,14 @@ function Search({searchsStore, location}) {
     window.location.href = url; 
   }
 
-
+  useEffect(() => {
+    if (!initialized) {
+      const url = querystring.decode(location.search)["?url"];
+      setUrl(url);
+      getListings(url);
+      setInitialized(true);
+    }
+  });
     
     return (
        
@@ -90,6 +97,6 @@ function Search({searchsStore, location}) {
 }
 
 
-export default Search;
-//export default withRouter(observer(Search));
+//export default Search;
+export default withRouter(observer(Search));
 

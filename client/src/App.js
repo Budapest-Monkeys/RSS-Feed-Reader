@@ -13,17 +13,25 @@ function App({ searchsStore }) {
   return (  
     <ThemeContextProvider>
     <Router history={history}>
-      <Routes>
-        <Route path="/" element={<Home/>}/>
-        <Route path="/feed" element = {<Feed/>}/>
-        <Route path="/search" element = {<Search/>}/>
+      
+        <Route
+          path="/"
+          exact
+          component={props => <Home {...props} searchsStore={searchsStore} />}
+        />
+        <Route
+          path="/feed"
+          exact
+          component={props => <Feed {...props} searchsStore={searchsStore} />}
+        />
+        <Route path="/test" element={<Test/>}/>
         <Route
           path="/search"
           exact
           component={props => <Search {...props} searchsStore={searchsStore} />}
         />
         <Route path="/test" element={<Test/>}/>
-      </Routes>
+    
     </Router>
     </ThemeContextProvider>
   );
