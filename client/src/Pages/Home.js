@@ -58,6 +58,9 @@ function Home() {
             <li> <a href ="/feed" id = "feed-link" >
                          Feed
                         </a> </li>
+            <li> <a href ="/search" id = "search-link" >
+                         Search
+                        </a> </li>           
            
           </ul>
           </div>
