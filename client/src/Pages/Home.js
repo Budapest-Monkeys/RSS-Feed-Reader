@@ -25,17 +25,6 @@ function Home() {
       );
     };
 
-
-    useEffect(() => {
-      // A proxy was define in package.json so we dont need to put the full route. 
-      fetch("/simpleAPI").then(
-        response => response.json()
-      ).then(
-        data => {
-          setBackEndData(data)
-        }
-      )
-    }, [])
     
     return (
         /*<div>
