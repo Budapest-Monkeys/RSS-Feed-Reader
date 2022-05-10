@@ -2,12 +2,14 @@ import React, {useEffect, useState, useContext } from 'react';
 import { ThemeContext } from "../contexts/ThemeContext";
 import { observer } from "mobx-react"; 
 import { withRouter } from "react-router-dom"; 
+
 import Card from "react-bootstrap/Card"; 
 import Button from "react-bootstrap/Button"; 
 import './/Search.css'
 import Footer from './Footer'
 import { getFeedListing } from "../contexts/requests"; 
 const querystring = require("querystring"); 
+
 
 function Search({feedsStore, location}) {
     const [initialized, setInitialized] = useState(false); 
@@ -84,7 +86,7 @@ function Search({feedsStore, location}) {
             <Card.Title className="card-title">{l.title}</Card.Title>
             <Card.Body>
               <p>{l.description}</p>
-              <p>{l.content}</p>
+              <p>{l.pubDate}</p>
               <Button variant="info" onClick={openLink.bind(this, l.link)}>
                 Open
               </Button>{" "}
