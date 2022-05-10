@@ -157,13 +157,15 @@ function SearchPage({ feedsStore }) {
               <Card.Title className="card-title">{f.name}</Card.Title>
               <Card.Body>
                 <p>{f.url}</p>
+                
                 <Button
                   variant="info"
+                  className="bttn"
                   onClick={setSelectedFeed.bind(this, f.url)}
                 >
                   Open
                 </Button>{" "}
-                <Button variant="info" onClick={deleteFeed.bind(this, i)}>
+                <Button className="bttn" variant="info" onClick={deleteFeed.bind(this, i)}>
                   Delete
                 </Button>
               </Card.Body>

@@ -7,3 +7,12 @@
     white-space: nowrap;
     text-overflow: ellipsis;
   }
+
+
+  .card {
+    margin-bottom: 10px;
+  }
+
+  .btn {
+    margin-top: 10px;
+  }

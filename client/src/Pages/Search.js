@@ -77,7 +77,7 @@ function Search({feedsStore, location}) {
           </div>
           <ThemeToggler className="themeBtn"/>  
           <div className="searchP">
-          <h1 className="center title"> 
+          <h1  className={`title ${theme}`}> 
             <img src={data.image} /> {data.title}
           </h1>
           {listings.map((l, i) => {
@@ -87,7 +87,7 @@ function Search({feedsStore, location}) {
             <Card.Body>
               <p>{l.description}</p>
               <p>{l.pubDate}</p>
-              <Button variant="info" onClick={openLink.bind(this, l.link)}>
+              <Button variant="info" className="btn" onClick={openLink.bind(this, l.link)}>
                 Open
               </Button>{" "}
             </Card.Body>
