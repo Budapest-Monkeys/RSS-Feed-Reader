@@ -10,3 +10,13 @@
       margin-top: 10px;
       margin-left: 10px;
   }
+
+.title {
+    text-align: center;
+    color:#13AA52;
+    display: block;
+    font-size: 50px;
+    font-weight: 700;
+}
+
+
