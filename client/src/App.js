@@ -5,6 +5,7 @@ import Home from './Pages/Home';
 import Feed from './Pages/Feed';
 import SearchPage from './Pages/SearchPage';
 import Search from './Pages/Search';
+import Lectures from './Pages/Lectures';
 import Test from './Pages/Test';
 import ThemeContextProvider from ".//contexts/ThemeContext";
 import 'bulma/css/bulma.css';
@@ -20,7 +21,11 @@ function App({ feedsStore }) {
           exact
           component={props => <Home {...props} feedsStore={feedsStore} />}
         />
-        
+        <Route
+          path="/lectures"
+          exact
+          component={props => <Lectures {...props} feedsStore={feedsStore} />}
+        />
         <Route path="/test" element={<Test/>}/>
         <Route
           path="/feed"
