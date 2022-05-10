@@ -80,7 +80,7 @@ function Search({feedsStore, location}) {
           </h1>
           {listings.map((l, i) => {
         return (
-          <Card key={i}>
+          <Card key={i} className={`card ${theme2}`}>
             <Card.Title className="card-title">{l.title}</Card.Title>
             <Card.Body>
               <p>{l.description}</p>

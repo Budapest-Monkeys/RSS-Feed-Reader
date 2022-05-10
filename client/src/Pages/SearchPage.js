@@ -153,7 +153,7 @@ function SearchPage({ feedsStore }) {
       <br />
       {feedsStore.feeds.map((f, i) => {
         return (
-            <Card key={i}>
+            <Card key={i} className={`card ${theme2}`}>
               <Card.Title className="card-title">{f.name}</Card.Title>
               <Card.Body>
                 <p>{f.url}</p>
