@@ -1,24 +1,24 @@
 import { observable, action, decorate } from "mobx"; 
 
-class SearchStore { 
+class FeedsStore { 
 
-  searchs = []; 
-  search = ""; 
+  feeds = []; 
+  feed = ""; 
 
-  setSearchs(searchs) { 
-    this.searchs = searchs; 
+  setFeeds(feeds) { 
+    this.feeds = feeds; 
   } 
 
-  setSelectedSearch(search) { 
-    this.search = search; 
+  setSelectedFeed(feed) { 
+    this.feed = feed; 
   } 
 } 
 
-SearchStore = decorate(SearchStore, { 
-  searchs: observable, 
-  search: observable, 
-  setSearchs: action, 
-  setSelectedSearch: action, 
+FeedsStore = decorate(FeedsStore, { 
+  feeds: observable, 
+  feed: observable, 
+  setFeeds: action, 
+  setSelectedFeed: action, 
 }); 
 
-export { SearchStore }; 
+export { FeedsStore }; 

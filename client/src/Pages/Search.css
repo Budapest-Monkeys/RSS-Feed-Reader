@@ -1,0 +1,9 @@
+.searchP {
+    padding: 20px;
+  }
+  
+  .title {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }

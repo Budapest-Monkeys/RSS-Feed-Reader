@@ -6,14 +6,15 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button"; 
 import './/Search.css'
 import Footer from './Footer'
-import { getSearchListing } from "../contexts/requests"; 
+import { getFeedListing } from "../contexts/requests"; 
 const querystring = require("querystring"); 
 
-function Search({searchsStore, location}) {
+function Search({feedsStore, location}) {
     const [initialized, setInitialized] = useState(false); 
     const [url, setUrl] = useState(""); 
     const [listings, setListings] = useState([]); 
     const [data, setData] = useState({}); 
+
     const context = useContext(ThemeContext);
     const theme = context.isLightTheme ? context.light : context.dark;
     const theme2 = context.isLightTheme ? context.cardLight : context.cardDark;
@@ -34,9 +35,9 @@ function Search({searchsStore, location}) {
 
     const getListings = async url => { 
       try { 
-        const response = await getSearchListing(url); 
+        const response = await getFeedListing(url); 
         setListings(response.data.items); 
-        setData(response.data.search); 
+        setData(response.data.feed); 
       } catch (ex) { 
         console.log(ex); 
       } 
@@ -55,9 +56,8 @@ function Search({searchsStore, location}) {
     }
   });
     
-    return (
-       
-         <div className= {`Search ${theme}` }>
+  return (
+    <div className= {`Search ${theme}` }>
          <div className={`nav ${theme2}`}>
           <div className="logo">RSS-Feed<span>.</span></div> 
           
@@ -65,35 +65,37 @@ function Search({searchsStore, location}) {
             <li> <a href ="/" id = "home-link" >
                          Home
                        </a> </li>
-            <li> <a href ="/feed" id = "feed-link" >
-                         Feed
-                        </a> </li>
-            <li> <a href ="/search" id = "search-link" >
+           
+              
+            <li> <a href ="/searchP" id = "search-link" >
                          Search
-                        </a> </li>           
+                        </a> </li>         
            
           </ul>
           </div>
+          <ThemeToggler className="themeBtn"/>  
+          <div className="searchP">
+          <h1 className="center title"> 
+            <img src={data.image} /> {data.title}
+          </h1>
           {listings.map((l, i) => {
-            return (
-              <Card key={i}>
-                <Card.Title className="card-title">{l.title}</Card.Title>
-                <Card.Body>
-                  <p>{l.description}</p>
-                  <p>{l.content}</p>
-                  <Button variant="primary" onClick={openLink.bind(this, l.link)}>
-                    Open
-                  </Button>{" "}
-                </Card.Body>
-              </Card>
-            );
-          })}
-          
-        <Footer/>
+        return (
+          <Card key={i}>
+            <Card.Title className="card-title">{l.title}</Card.Title>
+            <Card.Body>
+              <p>{l.description}</p>
+              <p>{l.content}</p>
+              <Button variant="info" onClick={openLink.bind(this, l.link)}>
+                Open
+              </Button>{" "}
+            </Card.Body>
+          </Card>
+        );
+      })}
+      </div>
+          <Footer/>
        </div>
-       
-
-    );
+  );
 }
 
 

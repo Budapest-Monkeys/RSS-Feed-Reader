@@ -55,18 +55,17 @@ function Home() {
             <li> <a href ="/" id = "home-link" >
                          Home
                        </a> </li>
-            <li> <a href ="/feed" id = "feed-link" >
-                         Feed
-                        </a> </li>
-            <li> <a href ="/search" id = "search-link" >
+              
+            <li> <a href ="/searchP" id = "search-link" >
                          Search
-                        </a> </li>           
+                        </a> </li>       
            
           </ul>
           </div>
        
-          <div className={`headerH ${theme3}`}>
-          <div className={`info ${theme3}`}>
+          <div className={`jumbotron ${theme3}`} >
+
+          <div className={`inf ${theme3}`}>
           <div className={theme3}>
           <ThemeToggler className="themeBtn"/>  
           </div>

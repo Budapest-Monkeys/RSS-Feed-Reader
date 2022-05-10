@@ -70,10 +70,8 @@ function Feed () {
             <li> <a href ="/" id = "home-link" >
                          Home
                        </a> </li>
-            <li> <a href ="/feed" id = "feed-link" >
-                         Feed
-                       </a> </li>
-            <li> <a href ="/search" id = "search-link" >
+            
+            <li> <a href ="/feed" id = "search-link" >
                          Search
                         </a> </li> 
           </ul>
