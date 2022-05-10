@@ -10,6 +10,17 @@ import Footer from './Footer'
 import { getFeedListing } from "../contexts/requests"; 
 const querystring = require("querystring"); 
 
+function removeTags(str) {
+  if ((str===null) || (str===''))
+      return false;
+  else
+      str = str.toString();
+        
+  // Regular expression to identify HTML tags in 
+  // the input string. Replacing the identified 
+  // HTML tag with a null string.
+  return str.replace( /(<([^>]+)>)/ig, '');
+}
 
 function Search({feedsStore, location}) {
     const [initialized, setInitialized] = useState(false); 
@@ -85,7 +96,7 @@ function Search({feedsStore, location}) {
           <Card key={i} className={`card ${theme2}`}>
             <Card.Title className="card-title">{l.title}</Card.Title>
             <Card.Body>
-              <p>{l.description}</p>
+              <p>{removeTags(l.description)}</p>
               <p>{l.pubDate}</p>
               <Button variant="info" className="btn" onClick={openLink.bind(this, l.link)}>
                 Open
@@ -99,6 +110,7 @@ function Search({feedsStore, location}) {
        </div>
   );
 }
+
 
 
 //export default Search;
