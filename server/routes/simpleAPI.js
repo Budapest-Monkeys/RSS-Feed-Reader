@@ -12,13 +12,26 @@ function itemParser(listOfItems) {
             parsedItem = { "title": item["title"][0],
             "pubDate": item["pubDate"][0],
             "image": item["itunes:image"][0]["$"]["href"],
-            "description": item["description"][0],
+            "description": removeTags(item["description"][0]),
             "audio": { "duration": item["enclosure"][0]["$"]["length"], "type" : item["enclosure"][0]["$"]["type"], "url" : item["enclosure"][0]["$"]["url"] }
             }
         }
         newList.push(parsedItem)
     }
     return newList;
+}
+
+// Remove tags function from GEEKSFORGEEKS. (thank you for making my life easy.)
+function removeTags(str) {
+    if ((str===null) || (str===''))
+        return false;
+    else
+        str = str.toString();
+          
+    // Regular expression to identify HTML tags in 
+    // the input string. Replacing the identified 
+    // HTML tag with a null string.
+    return str.replace( /(<([^>]+)>)/ig, '');
 }
 
 const myFeedParser = function (req, res, next) {
@@ -44,6 +57,8 @@ const myFeedParser = function (req, res, next) {
         });
     })
 }
+
+
 
 router.use(myFeedParser)
 
